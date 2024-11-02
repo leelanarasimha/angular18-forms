@@ -4,6 +4,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { NameEditorComponent } from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
     TemplateFormComponent,
     NameEditorComponent,
     ProfileEditorComponent,
+    UserLoginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
