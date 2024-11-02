@@ -12,11 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ActorFormComponent {
   skills = ['Method Acting', 'Singing', 'Dancing', 'Swordfighting'];
-  submitted = false;
 
-  model = new Actor(18, 'Tom Cruise', this.skills[3], 'CW Productions');
 
-  onSubmit() {
-    this.submitted = true;
-  }
+  model = new Actor('Tom Cruise', this.skills[3], 'CW Productions');
 }

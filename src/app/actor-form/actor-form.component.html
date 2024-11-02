@@ -1,6 +1,7 @@
+{{ model | json }}
 <div class="container">
   <h2>Actor form</h2>
-  <form (ngSubmit)="onSubmit()" *ngIf="!submitted">
+  <form #actorForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
       <input
@@ -40,9 +41,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-</div>
-
-<div *ngIf="submitted">
-  <h3>Form Submitted!</h3>
-  <p>{{ model.name }} (Skill: {{ model.skill }})</p>
 </div>
