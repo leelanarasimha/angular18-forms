@@ -1,19 +1,7 @@
-<form [formGroup]="userLoginForm" (ngSubmit)="onSubmit($event)">
-  <div>
-    <label for="name">Name</label>
-    <input type="text" id="name" formControlName="name" />
-  </div>
-  <div>
-    <label for="email">email</label>
-    <input type="text" id="email" formControlName="email" />
-  </div>
-  <div>
-    <label for="age">age</label>
-    <input type="number" id="age" formControlName="age" />
-  </div>
+<div>
+  <label for="email">EMail</label>
+  <input type="text" id="name" [formControl]="emailControl" />
+</div>
+<p>Current Value: {{ emailControl.value }}</p>
 
-  <div>
-    <button>Submit</button>
-    <button (click)="updateValues()" type="button">Update Values</button>
-  </div>
-</form>
+<button (click)="resetEmail()">Reset</button>
