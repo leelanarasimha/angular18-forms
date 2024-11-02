@@ -5,6 +5,7 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 import { NameEditorComponent } from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     NameEditorComponent,
     ProfileEditorComponent,
     UserLoginComponent,
+    LoginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

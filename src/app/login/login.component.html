@@ -1,0 +1,11 @@
+<form [formGroup]="loginForm">
+  <label>
+    Email:
+    <input formControlName="email" />
+  </label>
+  <label>
+    Password:
+    <input type="password" formControlName="password" />
+  </label>
+</form>
+<p>Form Value: {{ loginForm.value | json }}</p>
