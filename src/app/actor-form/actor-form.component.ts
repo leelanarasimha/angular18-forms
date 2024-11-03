@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Actor } from './actor';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-actor-form',
@@ -13,6 +13,5 @@ import { FormsModule } from '@angular/forms';
 export class ActorFormComponent {
   skills = ['Method Acting', 'Singing', 'Dancing', 'Swordfighting'];
 
-
-  model = new Actor('Tom Cruise', this.skills[3], 'CW Productions');
+  model = new Actor('', this.skills[3], 'CW Productions');
 }

@@ -8,10 +8,14 @@
         type="text"
         class="form-control"
         id="name"
+        #name="ngModel"
         [(ngModel)]="model.name"
         name="name"
         required
       />
+    </div>
+    <div class="alert alert-danger" [hidden]="name.valid || name.pristine">
+      Name is required
     </div>
 
     <div class="form-group">
