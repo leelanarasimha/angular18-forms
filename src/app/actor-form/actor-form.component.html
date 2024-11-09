@@ -10,6 +10,7 @@
           class="form-control"
           required
           minlength="4"
+          appForbiddenName="leela"
           [(ngModel)]="actor.name"
           #name="ngModel"
         />
@@ -20,6 +21,7 @@
         <div *ngIf="name.hasError('minlength')">
           Name must be atleast 4 chanracters long
         </div>
+        <div *ngIf="name.hasError('forbiddenName')">Invalid Name</div>
       </div>
     </div>
   </div>
