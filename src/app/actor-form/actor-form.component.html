@@ -1,48 +1,26 @@
-{{ model | json }}
 <div class="container">
-  <h2>Actor form</h2>
-  <form #actorForm="ngForm">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        #name="ngModel"
-        [(ngModel)]="model.name"
-        name="name"
-        required
-      />
-    </div>
-    <div class="alert alert-danger" [hidden]="name.valid || name.pristine">
-      Name is required
-    </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Actor Form</h2>
 
-    <div class="form-group">
-      <label for="studio">Studio</label>
-      <input
-        type="text"
-        class="form-control"
-        id="studio"
-        [(ngModel)]="model.studio"
-        name="studio"
-      />
-    </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          required
+          minlength="4"
+          [(ngModel)]="actor.name"
+          #name="ngModel"
+        />
+      </div>
 
-    <div class="form-group">
-      <label for="skill">Skills</label>
-      <select
-        class="form-control"
-        id="skill"
-        [(ngModel)]="model.skill"
-        name="skill"
-        required
-      >
-        <option *ngFor="let skill of skills" [value]="skill">
-          {{ skill }}
-        </option>
-      </select>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div *ngIf="name.hasError('required')">Name is required</div>
+        <div *ngIf="name.hasError('minlength')">
+          Name must be atleast 4 chanracters long
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  </div>
 </div>
