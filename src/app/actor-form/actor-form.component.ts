@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Actor } from './actor';
 import { CommonModule } from '@angular/common';
 import {
@@ -12,6 +12,8 @@ import {
 import { forbiddenNameDirective } from './forbidden-name.directive';
 import { forbiddenNameValidator } from './forbidden-name.validator';
 import { mustNotMatchValidator } from './mustNotMatch.validator';
+import { uniqueRoleValidator } from './unique-role.validator';
+import { ActorService } from './actor.service';
 
 @Component({
   selector: 'app-actor-form',
@@ -21,6 +23,7 @@ import { mustNotMatchValidator } from './mustNotMatch.validator';
   styleUrl: './actor-form.component.css',
 })
 export class ActorFormComponent {
+  actorService = inject(ActorService);
   actorForm = new FormGroup(
     {
       name: new FormControl('', [
@@ -28,7 +31,11 @@ export class ActorFormComponent {
         Validators.minLength(4),
         forbiddenNameValidator(/leela/i),
       ]),
-      role: new FormControl(''),
+      role: new FormControl('', {
+        validators: [Validators.required],
+        asyncValidators: [uniqueRoleValidator(this.actorService)],
+        updateOn: 'blur',
+      }),
       skill: new FormControl('', Validators.required),
     },
     { validators: [mustNotMatchValidator] }
@@ -36,6 +43,9 @@ export class ActorFormComponent {
 
   get name() {
     return this.actorForm.controls.name;
+  }
+  get role() {
+    return this.actorForm.controls.role;
   }
 
   get skill() {

@@ -31,6 +31,11 @@
         formControlName="role"
         required
       />
+
+      <div *ngIf="role.pending">Checking availablilty of role</div>
+      <div *ngIf="role.hasError('uniqueRole')">
+        The role is not unique. Select another role
+      </div>
     </div>
 
     <div class="form-group">
