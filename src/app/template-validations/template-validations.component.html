@@ -1,0 +1,47 @@
+<div class="container">
+  <form #actorForm="ngForm" appmustNotMatch>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        name="name"
+        required
+        minlength="4"
+        #name="ngModel"
+        [(ngModel)]="actor.name"
+        class="form-control"
+      />
+      @if (name.invalid && (name.touched || name.dirty)) {
+      <div class="alert alert-danger">
+        @if (name.hasError('required')) { Name is Required } @if
+        (name.hasError('minlength')) { Name shoudl have altlease 4 characters }
+      </div>
+      }
+    </div>
+    <div class="form-group">
+      <label for="role">Role</label>
+      <input
+        type="text"
+        name="role"
+        required
+        class="form-control"
+        [(ngModel)]="actor.role"
+        #role="ngModel"
+      />
+      @if (role.invalid && (role.touched || role.dirty)) { @if
+      (role.hasError('required')) {
+      <div class="alert alert-danger">Role is required</div>
+      } }
+    </div>
+
+    @if (actorForm.hasError('mustNotMatch') && (actorForm.touched ||
+    actorForm.dirty)) {
+
+    <div class="alert alert-danger">Name and role must not match</div>
+    }
+
+    <div>
+      <button [disabled]="actorForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>

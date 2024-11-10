@@ -7,6 +7,7 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
 import { UserLoginComponent } from './user-login/user-login.component';
 import { LoginComponent } from './login/login.component';
 import { ActorFormComponent } from './actor-form/actor-form.component';
+import { TemplateValidationsComponent } from './template-validations/template-validations.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { ActorFormComponent } from './actor-form/actor-form.component';
     UserLoginComponent,
     LoginComponent,
     ActorFormComponent,
+    TemplateValidationsComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
