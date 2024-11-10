@@ -51,6 +51,13 @@
       }
     </div>
 
+    @if (actorForm.hasError('mustNotMatch') && (actorForm.touched ||
+    actorForm.dirty)) {
+    <div class="alert alert-danger">
+      Name and role must not match each other
+    </div>
+    }
+
     <button [disabled]="actorForm.invalid">Submit</button>
   </form>
 </div>

@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { forbiddenNameDirective } from './forbidden-name.directive';
 import { forbiddenNameValidator } from './forbidden-name.validator';
+import { mustNotMatchValidator } from './mustNotMatch.validator';
 
 @Component({
   selector: 'app-actor-form',
@@ -20,15 +21,18 @@ import { forbiddenNameValidator } from './forbidden-name.validator';
   styleUrl: './actor-form.component.css',
 })
 export class ActorFormComponent {
-  actorForm = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-      Validators.minLength(4),
-      forbiddenNameValidator(/leela/i),
-    ]),
-    role: new FormControl(''),
-    skill: new FormControl('', Validators.required),
-  });
+  actorForm = new FormGroup(
+    {
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        forbiddenNameValidator(/leela/i),
+      ]),
+      role: new FormControl(''),
+      skill: new FormControl('', Validators.required),
+    },
+    { validators: [mustNotMatchValidator] }
+  );
 
   get name() {
     return this.actorForm.controls.name;
