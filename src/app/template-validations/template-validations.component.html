@@ -1,5 +1,5 @@
 <div class="container">
-  <form #actorForm="ngForm" appmustNotMatch>
+  <form #actorForm="ngForm" appmustNotMatch ngNativeValidate>
     <div class="form-group">
       <label for="name">Name</label>
       <input
@@ -27,8 +27,14 @@
         class="form-control"
         [(ngModel)]="actor.role"
         #role="ngModel"
+        appUniqueRole
+        [ngModelOptions]="{ updateOn: 'blur' }"
       />
-      @if (role.invalid && (role.touched || role.dirty)) { @if
+      @if (role.pending){
+      <div class="alert alert-danger">Checking availability...</div>
+      } @if (role.hasError('uniqueRole')) {
+      <div class="alert alert-danger">Role is already taken.</div>
+      } @if (role.invalid && (role.touched || role.dirty)) { @if
       (role.hasError('required')) {
       <div class="alert alert-danger">Role is required</div>
       } }
